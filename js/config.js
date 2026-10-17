@@ -6,7 +6,7 @@
 
 window.BIRTHDAY_CONFIG = {
   // Basic Information
-  friendName: "Alex",
+  friendName: "Nikhil",
   nickname: "The Legend",
   birthdate: "October 18", // Or any date string
   yearOrAge: "21st", // e.g. "21st", "25th", or leave blank ""
@@ -85,8 +85,8 @@ window.BIRTHDAY_CONFIG = {
   // Heartfelt Letter (Typewriter effect)
   letter: {
     sender: "Your Best Friend",
-    recipient: "Alex",
-    greeting: "Dear Alex,",
+    recipient: "Nikhil",
+    greeting: "Dear Nikhil,",
     paragraphs: [
       "I wanted to take a moment today to remind you how much you mean to everyone around you.",
       "Life moves crazy fast, but having a genuine, supportive, hilarious friend like you makes the ride a million times better. Thank you for always showing up, for the spontaneous calls, and for being someone I can always count on.",

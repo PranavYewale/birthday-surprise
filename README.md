@@ -79,7 +79,7 @@ git push -u origin main
 
 ### Option B: Edit `js/config.js`
 Open `js/config.js` in any text editor and adjust:
-- `friendName`: e.g., `"Alex"`
+- `friendName`: e.g., `"Nikhil"`
 - `nickname`: e.g., `"The Legend"`
 - `birthdate`: e.g., `"October 18"`
 - `polaroids`: Paste links to your photos or put images inside the `assets/images/` folder and link them (e.g., `"assets/images/pic1.jpg"`).
