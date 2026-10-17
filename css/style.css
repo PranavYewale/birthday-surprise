@@ -680,3 +680,142 @@ body {
   .flame { width: 13px; height: 21px; }
   .letter-sheet { padding: 1.25rem; font-size: 0.95rem; }
 }
+
+/* --------------------------------------------------------------------------
+   8. DISCO MODE & PARTY LIGHTS
+   -------------------------------------------------------------------------- */
+body.disco-mode-active {
+  animation: discoBg 2s infinite alternate ease-in-out;
+}
+
+@keyframes discoBg {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(90deg) contrast(1.1); }
+  100% { filter: hue-rotate(180deg); }
+}
+
+/* --------------------------------------------------------------------------
+   9. WHEEL OF DESTINY
+   -------------------------------------------------------------------------- */
+.wheel-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+#wheelCanvas {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+}
+
+/* --------------------------------------------------------------------------
+   10. WISHING WALL STICKY NOTES
+   -------------------------------------------------------------------------- */
+.sticky-note {
+  min-height: 140px;
+  position: relative;
+  transition: transform 0.3s ease;
+  transform: rotate(calc((var(--note-index, 1) % 2 == 0 ? 1 : -1) * 2deg));
+}
+
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.04) translateY(-4px);
+  z-index: 10;
+}
+
+.sticky-pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.note-pink {
+  background: #fdf2f8;
+  border-left: 5px solid #ec4899;
+}
+
+.note-yellow {
+  background: #fefce8;
+  border-left: 5px solid #eab308;
+}
+
+.note-blue {
+  background: #f0fdf4;
+  border-left: 5px solid #10b981;
+}
+
+.note-green {
+  background: #f0f9ff;
+  border-left: 5px solid #06b6d4;
+}
+
+/* --------------------------------------------------------------------------
+   11. DJ SOUNDBOARD BUTTONS
+   -------------------------------------------------------------------------- */
+.dj-pad-btn {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.dj-pad-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: #ec4899;
+  background: rgba(236, 72, 153, 0.2);
+  box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
+}
+
+.dj-pad-btn:active {
+  transform: translateY(2px) scale(0.96);
+}
+
+/* --------------------------------------------------------------------------
+   12. CHAOS FLOATING EMOJI RAIN
+   -------------------------------------------------------------------------- */
+.chaos-floating-emoji {
+  position: fixed;
+  top: -60px;
+  pointer-events: none;
+  z-index: 999;
+  animation: emojiRain linear forwards;
+}
+
+@keyframes emojiRain {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

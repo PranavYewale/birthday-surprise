@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Happy Birthday! 🎂✨</title>
+  <title>Happy Birthday Nikhil! 🎂✨</title>
   
   <!-- Tailwind CSS & Canvas Confetti -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -90,10 +90,13 @@
         Another 365 days of legendary adventures, chaotic laughs, and being an unmatched human being. ✨
       </p>
 
-      <div class="flex flex-wrap justify-center gap-3 mt-6">
+      <div class="flex flex-wrap justify-center items-center gap-3 mt-6">
         <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold">👑 Certified Legend</span>
         <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold">⚡ Main Character Energy</span>
         <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold">⭐ 100% Awesome</span>
+        <button id="easterEggBadge" title="Secret: Tap 5 times for Party Chaos!" class="px-3 py-1 rounded-full bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 text-xs font-semibold cursor-pointer transition-all">
+          💣 Party Bomb (Tap 5x)
+        </button>
       </div>
     </section>
 
@@ -112,18 +115,13 @@
       <!-- The 3D Cake -->
       <div class="cake-stage my-6">
         <div class="cake-body-wrapper">
-          <!-- Candles distributed dynamically -->
           <div id="candlesContainer" class="candles-row"></div>
-          
-          <!-- Cake Top Tier -->
           <div class="cake-tier-top">
             <div class="cake-frosting"></div>
           </div>
-          <!-- Cake Bottom Tier -->
           <div class="cake-tier-bottom">
             <div class="cake-frosting"></div>
           </div>
-          <!-- Cake Plate -->
           <div class="cake-plate"></div>
         </div>
       </div>
@@ -144,7 +142,6 @@
         </button>
       </div>
 
-      <!-- Wish confirmation message banner -->
       <div id="wishMessage" class="hidden text-center mt-6 p-4 rounded-xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-amber-500/20 border border-amber-400/40"></div>
     </section>
 
@@ -166,7 +163,7 @@
             THE TRUTH
           </span>
           <h3 class="text-lg font-bold text-white mt-3">The Roast & Toast</h3>
-          <p class="text-slate-400 text-xs mt-1">A hilarious, 100% unfiltered celebration of who you really are.</p>
+          <p class="text-slate-400 text-xs mt-1">A hilarious, 100% unfiltered celebration of who Nikhil really is.</p>
           <div class="mt-4 text-xs font-bold text-pink-400 flex items-center justify-center gap-1">
             <span>Tap to Reveal</span> <span>→</span>
           </div>
@@ -201,7 +198,112 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 3: MEMORY LANE (POLAROID PHOTO WALL)
+         SECTION 3: THE WHEEL OF DESTINY & RUSSIAN-DOLL GIFT BOX
+         ========================================================================= -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      
+      <!-- The Wheel of Destiny -->
+      <div class="glass-panel p-6 sm:p-8 relative flex flex-col items-center justify-between text-center">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-pink-400">🎡 SPIN TO WIN</span>
+          <h2 class="text-2xl font-extrabold text-white mt-1">Wheel of Destiny</h2>
+          <p class="text-slate-400 text-xs mt-1">Give it a full spin to reveal Nikhil's guaranteed birthday reward!</p>
+        </div>
+
+        <div class="wheel-wrapper my-6">
+          <canvas id="wheelCanvas" width="300" height="300"></canvas>
+        </div>
+
+        <div class="w-full">
+          <button id="spinWheelBtn" class="glow-btn w-full py-3 rounded-full text-white font-black text-xs uppercase tracking-wider">
+            🎲 Spin The Wheel
+          </button>
+          <div id="wheelResult" class="hidden mt-4"></div>
+        </div>
+      </div>
+
+      <!-- Russian-Doll 3D Mystery Box -->
+      <div class="glass-panel p-6 sm:p-8 relative flex flex-col justify-between text-center">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400">📦 MULTI-LAYER DISPATCH</span>
+          <h2 class="text-2xl font-extrabold text-white mt-1">The Russian-Doll Mystery Box</h2>
+          <p class="text-slate-400 text-xs mt-1">There's a secret box inside a box... keep unwrapping to find the grand prize!</p>
+        </div>
+
+        <div id="nestedGiftWrapper" class="my-8 flex flex-col items-center">
+          <div id="nestedBoxVisual" class="text-7xl mb-4 animate-bounce" style="animation-duration: 2.5s;">
+            🎁
+          </div>
+          <p id="nestedLayerText" class="text-slate-300 text-sm font-semibold max-w-xs">
+            A heavily sealed luxury parcel addressed directly to Nikhil!
+          </p>
+          <div class="mt-6">
+            <button id="openNestedBoxBtn" class="glow-btn px-8 py-3 rounded-full text-white font-bold text-xs uppercase tracking-wider">
+              Unwrap Layer 1 🎀
+            </button>
+          </div>
+        </div>
+
+        <div class="text-[11px] text-slate-500">
+          Tip: Only true legends can unlock all the layers!
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: THE OFFICIAL FRIENDSHIP TRIVIA QUIZ
+         ========================================================================= -->
+    <section class="glass-panel p-6 sm:p-10 mb-16 relative">
+      <div class="text-center max-w-lg mx-auto mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-purple-400">🧠 FRIENDSHIP AUDIT</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">The "Do You Know Nikhil?" Quiz</h2>
+        <p class="text-slate-400 text-sm mt-1">
+          Answer the questions to prove your status as Nikhil's certified bestie!
+        </p>
+      </div>
+
+      <!-- Quiz Start Screen -->
+      <div id="quizStartScreen" class="text-center py-6">
+        <div class="text-5xl mb-4">🏆</div>
+        <button id="startQuizBtn" class="glow-btn px-8 py-3 rounded-full text-white font-black text-xs uppercase tracking-wider">
+          Start Friendship Quiz 🚀
+        </button>
+      </div>
+
+      <!-- Active Question Card -->
+      <div id="quizActiveCard" class="hidden max-w-xl mx-auto">
+        <div class="flex justify-between items-center text-xs font-bold text-purple-300 mb-2">
+          <span id="quizQuestionNum">Question 1 of 3</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/30">Trivia Time</span>
+        </div>
+        <h3 id="quizQuestionText" class="text-lg font-bold text-white mb-4 leading-snug"></h3>
+        
+        <div id="quizOptionsContainer" class="space-y-3"></div>
+        <div id="quizFeedback"></div>
+      </div>
+
+      <!-- Quiz Completion & Certificate -->
+      <div id="quizEndScreen" class="hidden max-w-md mx-auto text-center py-4">
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-amber-500/20 via-pink-500/20 to-purple-500/20 border-2 border-amber-400 shadow-2xl">
+          <div class="text-5xl mb-2">🏅</div>
+          <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-amber-400 text-slate-900 rounded-full">
+            OFFICIAL CERTIFICATE
+          </span>
+          <h3 class="text-2xl font-black text-white mt-2">CERTIFIED BEST FRIEND</h3>
+          <p class="text-xs text-slate-300 mt-1">
+            Score: <span id="quizScoreText" class="font-bold text-amber-300"></span> • Officially recognized as a lifelong companion of <strong>Nikhil</strong>!
+          </p>
+          <div class="mt-4 flex justify-center gap-2">
+            <button id="restartQuizBtn" class="px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 text-xs font-bold">
+              Retake Quiz 🔄
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: MEMORY LANE (POLAROID PHOTO WALL)
          ========================================================================= -->
     <section class="glass-panel p-6 sm:p-10 mb-16 relative">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
@@ -219,12 +321,24 @@
         </div>
       </div>
 
-      <!-- Dynamic Polaroid Grid -->
       <div id="polaroidGrid" class="polaroid-grid"></div>
     </section>
 
     <!-- =========================================================================
-         SECTION 4: VINTAGE SEALED ENVELOPE & TYPEWRITER LETTER
+         SECTION 6: NIKHIL'S HALL OF FAME (SUPERPOWER BADGES)
+         ========================================================================= -->
+    <section class="mb-16">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">⚡ HALL OF FAME</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Nikhil's Official Superpowers</h2>
+        <p class="text-slate-400 text-sm mt-1">Click on each superpower badge to activate its party vibe!</p>
+      </div>
+
+      <div id="superpowersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: VINTAGE SEALED ENVELOPE & TYPEWRITER LETTER
          ========================================================================= -->
     <section class="mb-16">
       <div class="text-center mb-8">
@@ -235,12 +349,10 @@
 
       <div class="envelope-wrapper">
         <div id="birthdayEnvelope" class="birthday-envelope cursor-pointer group">
-          <!-- Wax Seal -->
           <div id="waxSeal" class="wax-seal" title="Break the wax seal">
             <span>🎂</span>
           </div>
 
-          <!-- Parchment Letter -->
           <div id="letterSheet" class="letter-sheet">
             <div class="font-handwriting text-2xl font-bold text-slate-800 mb-4">
               Dear <span class="cfg-friend-name">Nikhil</span>,
@@ -259,7 +371,7 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 5: 15-SECOND BALLOON RUSH ARCADE GAME
+         SECTION 8: 15-SECOND BALLOON RUSH ARCADE GAME
          ========================================================================= -->
     <section class="glass-panel p-6 sm:p-10 mb-16 relative">
       <div class="text-center max-w-lg mx-auto mb-6">
@@ -270,9 +382,7 @@
         </p>
       </div>
 
-      <!-- Game Arena Canvas -->
       <div id="gameArena" class="game-arena flex items-center justify-center">
-        <!-- Start Screen -->
         <div id="gameStartScreen" class="text-center z-10 p-6">
           <div class="text-5xl mb-3 animate-bounce">🎈</div>
           <button id="startGameBtn" class="glow-btn px-8 py-3 rounded-full text-white font-black text-sm tracking-wide uppercase">
@@ -280,7 +390,6 @@
           </button>
         </div>
 
-        <!-- Active HUD -->
         <div id="gameActiveHUD" class="hidden absolute top-4 left-4 right-4 flex justify-between items-center z-20 pointer-events-none">
           <div class="px-4 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-xs font-bold text-white flex items-center gap-1.5">
             <span>Score:</span> <span id="gameScoreVal" class="text-amber-300 text-sm">0</span>
@@ -290,7 +399,6 @@
           </div>
         </div>
 
-        <!-- Game Over / Victory Screen -->
         <div id="gameOverScreen" class="hidden text-center z-20 p-6 bg-slate-950/90 rounded-2xl border border-slate-700 max-w-sm mx-4">
           <div id="winStatusText"></div>
           <div class="text-3xl font-black text-white mt-3">Final Score: <span id="finalScoreVal" class="text-amber-400">0</span></div>
@@ -299,6 +407,82 @@
           </button>
         </div>
       </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 9: NIKHIL'S PARTY DJ SOUNDBOARD & DISCO MODE
+         ========================================================================= -->
+    <section class="glass-panel p-6 sm:p-10 mb-16 relative">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-400">🎛️ PARTY MODE</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Birthday DJ Soundboard</h2>
+          <p class="text-slate-400 text-sm mt-1">Tap pads to play real party sound effects and hype up Nikhil's celebration!</p>
+        </div>
+        <div>
+          <button id="toggleDiscoBtn" class="px-4 py-2 rounded-full bg-slate-800 hover:bg-purple-600 text-slate-200 border border-slate-600 text-xs font-bold flex items-center gap-2 transition-all">
+            <span>🪩</span>
+            <span>Toggle Disco Lights</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        <button id="btnAirHorn" class="dj-pad-btn">
+          <span class="text-3xl mb-1">🎺</span>
+          <span class="text-xs font-bold text-slate-200">Air Horn</span>
+          <span class="text-[10px] text-pink-400 font-mono mt-0.5">BRRR-BRRR!</span>
+        </button>
+
+        <button id="btnCheer" class="dj-pad-btn">
+          <span class="text-3xl mb-1">👏</span>
+          <span class="text-xs font-bold text-slate-200">Crowd Cheers</span>
+          <span class="text-[10px] text-amber-400 font-mono mt-0.5">APPLAUSE</span>
+        </button>
+
+        <button id="btnPopper" class="dj-pad-btn">
+          <span class="text-3xl mb-1">💥</span>
+          <span class="text-xs font-bold text-slate-200">Party Popper</span>
+          <span class="text-[10px] text-cyan-400 font-mono mt-0.5">CONFETTI</span>
+        </button>
+
+        <button id="btnSplat" class="dj-pad-btn">
+          <span class="text-3xl mb-1">🍰</span>
+          <span class="text-xs font-bold text-slate-200">Cake Splat</span>
+          <span class="text-[10px] text-emerald-400 font-mono mt-0.5">SPLAT!</span>
+        </button>
+
+        <button id="btnDiscoBeat" class="dj-pad-btn col-span-2 sm:col-span-1">
+          <span class="text-3xl mb-1">🕺</span>
+          <span class="text-xs font-bold text-slate-200">8-Bit Disco</span>
+          <span class="text-[10px] text-purple-400 font-mono mt-0.5">SYNTH BEAT</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 10: DIGITAL WISHING WALL (STICKY NOTES)
+         ========================================================================= -->
+    <section class="glass-panel p-6 sm:p-10 mb-16 relative">
+      <div class="text-center max-w-lg mx-auto mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">💬 COMMUNITY LOVE</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Nikhil's Birthday Wishing Wall</h2>
+        <p class="text-slate-400 text-sm mt-1">
+          Leave a permanent birthday sticky note on Nikhil's board!
+        </p>
+      </div>
+
+      <!-- Add Note Input Bar -->
+      <div class="max-w-xl mx-auto mb-8 p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex flex-col sm:flex-row gap-2">
+        <input type="text" id="wishAuthorInput" placeholder="Your Name" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs sm:w-1/3 focus:outline-none focus:border-pink-500">
+        <input type="text" id="wishMsgInput" placeholder="Write an awesome wish for Nikhil..." class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs flex-1 focus:outline-none focus:border-pink-500">
+        <button id="postWishBtn" class="glow-btn px-5 py-2 rounded-xl text-white font-bold text-xs uppercase tracking-wider whitespace-nowrap">
+          Pin Wish 📌
+        </button>
+      </div>
+
+      <!-- Sticky Notes Grid -->
+      <div id="wishingNotesContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-2"></div>
     </section>
 
     <!-- =========================================================================
@@ -314,7 +498,7 @@
       </p>
 
       <div class="mt-6 flex justify-center gap-3">
-        <button onclick="navigator.clipboard?.writeText(window.location.href); alert('🎉 Website link copied! Send it to your friend!');" class="px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-2 transition-colors">
+        <button onclick="navigator.clipboard?.writeText(window.location.href); alert('🎉 Website link copied! Send it to Nikhil!');" class="px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-2 transition-colors">
           <span>🔗</span>
           <span>Copy Website Link</span>
         </button>
@@ -338,12 +522,10 @@
         <h3 id="mysteryModalTitle" class="text-xl font-extrabold text-white mt-2">Special Gift</h3>
       </div>
 
-      <!-- Default Text Box Container -->
       <div id="defaultBoxContainer" class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 text-sm leading-relaxed max-h-60 overflow-y-auto">
         <div id="mysteryModalBody"></div>
       </div>
 
-      <!-- Scratch Card Container -->
       <div id="scratchCardContainer" class="hidden">
         <div class="scratch-box-wrapper relative">
           <div class="scratch-prize-layer">
@@ -381,7 +563,7 @@
       <div class="text-center mb-6">
         <div class="text-3xl mb-1">⚙️</div>
         <h3 class="text-xl font-extrabold text-white">Customize This Birthday Wish</h3>
-        <p class="text-xs text-slate-400 mt-1">Easily update your friend's details below! Saves instantly in your browser.</p>
+        <p class="text-xs text-slate-400 mt-1">Easily update Nikhil's details below! Saves instantly in your browser.</p>
       </div>
 
       <div class="space-y-4 text-left">
@@ -426,6 +608,9 @@
   <script src="js/cake.js"></script>
   <script src="js/scratch.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/trivia.js"></script>
+  <script src="js/party.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

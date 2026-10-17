@@ -33,6 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. Initialize Cake & Mini-Game
   if (window.birthdayCake) window.birthdayCake.init();
   if (window.balloonRushGame) window.balloonRushGame.init();
+
+  // 11. Initialize Wheel of Destiny, Trivia Quiz & Party Controller
+  if (window.BirthdayWheel) {
+    const wheel = new window.BirthdayWheel('wheelCanvas');
+    wheel.init();
+  }
+  if (window.birthdayTriviaQuiz) window.birthdayTriviaQuiz.init();
+  if (window.partyController) window.partyController.init();
 });
 
 // Load config from LocalStorage if user previously edited in browser

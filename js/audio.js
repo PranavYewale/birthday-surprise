@@ -185,6 +185,115 @@ class BirthdayAudioEngine {
     }
   }
 
+  // Sound effect: DJ Air Horn
+  playAirHorn() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const hornFreqs = [466.16, 466.16, 466.16, 622.25]; // Bb4 Bb4 Bb4 Eb5
+    hornFreqs.forEach((freq, idx) => {
+      const startTime = this.ctx.currentTime + (idx * 0.11);
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, startTime);
+      gain.gain.setValueAtTime(0.3, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.09);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + 0.09);
+    });
+  }
+
+  // Sound effect: Crowd Applause & Cheering
+  playCheer() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const duration = 1.2;
+    const bufferSize = this.ctx.sampleRate * duration;
+    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+    }
+    const noise = this.ctx.createBufferSource();
+    noise.buffer = buffer;
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(1000, this.ctx.currentTime);
+    filter.Q.setValueAtTime(1.5, this.ctx.currentTime);
+    const gain = this.ctx.createGain();
+    gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+    noise.start();
+  }
+
+  // Sound effect: Wheel Tick
+  playWheelTick() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + 0.03);
+    gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.03);
+  }
+
+  // Sound effect: Quiz Correct Answer
+  playCorrect() {
+    this.playTone(587.33, 0.15, 0, 'sine');   // D5
+    this.playTone(880.00, 0.35, 0.12, 'sine'); // A5
+  }
+
+  // Sound effect: Quiz Wrong / Roast Buzzer
+  playWrong() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(180, this.ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(110, this.ctx.currentTime + 0.25);
+    gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.25);
+  }
+
+  // Sound effect: Splat / Cake Throw
+  playSplat() {
+    this.playPop();
+    this.playTone(200, 0.1, 0, 'sawtooth');
+  }
+
+  // Sound effect: 8-Bit Disco Synth Beat (short party groove)
+  playDiscoBeat() {
+    if (this.isMuted) return;
+    this.init();
+    const bassline = [130.81, 130.81, 164.81, 196.00, 220.00, 196.00, 164.81, 146.83];
+    bassline.forEach((freq, idx) => {
+      this.playTone(freq, 0.12, idx * 0.14, 'square');
+      if (idx % 2 === 0) {
+        this.playPop();
+      }
+    });
+  }
+
   stopMelody() {
     this.isPlayingBgm = false;
     this.clearMelodyTimers();
@@ -200,3 +309,4 @@ class BirthdayAudioEngine {
 }
 
 window.birthdayAudio = new BirthdayAudioEngine();
+
